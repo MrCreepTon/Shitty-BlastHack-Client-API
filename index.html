@@ -1,1 +1,1176 @@
-<h1>Test</h1>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>bh API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>bh</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import requests
+import bs4
+from requests.exceptions import RequestException
+from requests.sessions import session
+import json
+import re
+import traceback
+
+class Error(Exception):
+    &#34;&#34;&#34;Base class for other exceptions&#34;&#34;&#34;
+    pass
+
+class ParseTokenError(Error):
+    &#34;&#34;&#34;Token can`t be parsed&#34;&#34;&#34;
+    pass
+
+class Comment:
+    def __init__(self, userId, nickname, message, fullMessage, commentId):
+        self.commentId = commentId
+        self.userId = userId
+        self.nickname = nickname
+        self.message = message
+        self.fullMessage = fullMessage
+
+class ProfileMessage:
+    def __init__(self, userId: int, nickname: str, message: str, fullMessage, comments, messageId):
+        self.messageId = messageId
+        self.userId = userId
+        self.nickname = nickname
+        self.message = message
+        self.comments = comments
+        self.fullMessage = fullMessage
+
+class ThreadMessage:
+    def __init__(self, userId: int, nickname: str, message: str, fullMessage, messageId):
+        self.messageId = messageId
+        self.userId = userId
+        self.nickname = nickname
+        self.message = message
+        self.fullMessage = fullMessage
+
+class Account:
+    def __init__(self, login: str, password: str):
+        try:
+            self.login = login
+            self.password = password
+            self.id = 0
+            self.client = requests.session()
+            self.client.get(&#39;https://blast.hk/&#39;)
+            r = self.client.get(&#39;https://www.blast.hk/&#39;)
+            html = r.text
+            soup = bs4.BeautifulSoup(html, &#39;html.parser&#39;)
+            self.token = soup.find(&#39;input&#39;, {&#39;name&#39;: &#39;_xfToken&#39;})
+            if self.token == None:
+                raise ParseTokenError
+            else:
+                self.token = self.token[&#39;value&#39;]
+            #print(self.token)
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+
+    def twoFactorAuthorize(self, code):
+        try:
+            r = self.client.post(&#39;https://www.blast.hk/login/two-step&#39;, data = {
+                &#39;code&#39;: code,
+                &#39;trust&#39;: &#39;1&#39;,
+                &#39;confirm&#39;: &#39;1&#39;,
+                &#39;provider&#39;: &#39;totp&#39;,
+                &#39;remember&#39;: &#39;1&#39;,
+                &#39;_xfRedirect&#39;: &#39;https://www.blast.hk/&#39;,
+                &#39;_xfToken&#39;: self.token,
+                &#39;_xfRequestUri&#39;: &#39;/login/two-step?_xfRedirect=https%3A%2F%2Fwww.blast.hk%2F&amp;remember=1&#39;,
+                &#39;_xfWithData&#39;: &#39;1&#39;,
+                &#39;_xfResponseType&#39;: &#39;json&#39;
+            })
+            data = json.loads(r.text)
+            return data[&#39;status&#39;] == &#39;ok&#39;
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+        
+    def authorize(self):
+        try:
+            r = self.client.post(&#39;https://www.blast.hk/login/login&#39;, data = {
+                &#39;login&#39;: self.login,
+                &#39;password&#39;: self.password,
+                &#39;remember&#39;: 1,
+                &#39;_xfRedirect&#39;: &#39;https://www.blast.hk/&#39;,
+                &#39;_xfToken&#39;: self.token
+            })
+            if r.text.find(&#39;Некорректный пароль&#39;) == -1:
+                if r.url.find(&#39;two-step&#39;) != -1:
+                    try:
+                        while True:
+                            if self.twoFactorAuthorize(input(&#39;Enter 2auth code: &#39;)):
+                                break
+                            else:
+                                print(&#39;Invalid code!&#39;)
+                    except KeyboardInterrupt:
+                        return False
+                self.id = self.client.cookies.get_dict()[&#39;xf_user&#39;].split(&#39;%&#39;)[0]
+                return True
+            else:
+                return False
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+
+    def getUserAvatarLink(self, userId):
+        try:
+            r = self.client.get(&#39;https://www.blast.hk/members/{0}/&#39;.format(userId))
+            html = r.text
+            soup = bs4.BeautifulSoup(html, &#39;html.parser&#39;)
+            avatars = soup.find(&#39;span&#39;, {&#39;class&#39;: &#39;avatarWrapper&#39;}).findAll(&#39;a&#39;)
+            if avatars == None:
+                return None
+            else:
+                for avatar in avatars:
+                    link = avatar.get(&#39;href&#39;)
+                    if link.find(&#39;.jpg&#39;) != -1 or link.find(&#39;.png&#39;) != -1:
+                        #print(link)
+                        return &#39;https://www.blast.hk{0}&#39;.format(link)
+                return None
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+
+    def changeBanner(self, imageData):
+        file_dict = {&#39;upload&#39;: (&#39;photo.png&#39;, imageData)}
+        try:
+            r = self.client.post(&#39;https://www.blast.hk/account/banner&#39;, data = {
+                &#39;banner_position_y&#39;: &#39;50&#39;,
+                &#39;_xfToken&#39;: self.token,
+                &#39;_xfRequestUri&#39;: &#39;/members/{0}/&#39;.format(self.id),
+                &#39;_xfWithData&#39;: &#39;1&#39;,
+                &#39;_xfResponseType&#39;: &#39;json&#39;
+            },
+            files = file_dict)
+            data = json.loads(r.text)
+            #print(data)
+            return not (&#39;status&#39; in data)
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+
+    def isLoggedIn(self):
+        try:
+            r = self.client.get(&#39;https://www.blast.hk/&#39;)
+            return r.text.find(&#39;p-navgroup-link p-navgroup-link--textual p-navgroup-link--logIn&#39;) == -1
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+
+    def getMessagesInThread(self, thread: int):
+        try:
+            cMessages = []
+            r = self.client.get(&#39;https://www.blast.hk/threads/{0}/&#39;.format(thread))
+            html = r.text
+            soup = bs4.BeautifulSoup(html, &#39;html.parser&#39;)
+            messages = soup.find_all(&#39;div&#39;, {&#39;class&#39;: &#39;message-inner&#39;})
+            for message in messages:
+                nickname = message.find(&#39;h4&#39;)
+                if nickname != None:
+                    messageId = message.find(&#39;div&#39;, {&#39;class&#39;: &#39;message-userContent lbContainer js-lbContainer&#39;})[&#39;data-lb-id&#39;].split(&#39;-&#39;)
+                    messageId = int(messageId[len(messageId) - 1])
+                    nickname = nickname.text.replace(&#39;\n&#39;, &#39;&#39;).replace(&#39;\t&#39;, &#39;&#39;).replace(&#39;\r&#39;, &#39;&#39;)
+                    userId = int(message.find(&#39;a&#39;, {&#39;class&#39;: &#39;username&#39;})[&#39;data-user-id&#39;])
+                    text = message.find(&#39;div&#39;, {&#39;class&#39;: &#39;bbWrapper&#39;})
+                    msg = str(text)
+                    if msg.rfind(&#39;&lt;/blockquote&gt;&#39;) != -1:
+                        text = msg[msg.rfind(&#39;&lt;/blockquote&gt;&#39;) + len(&#39;&lt;/blockquote&gt;&#39;):len(msg)]
+                    else:
+                        text = text.text
+                    cMessages.append(ThreadMessage(userId, nickname, text, msg, messageId))
+            return cMessages
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+
+    def getLastThreads(self):
+        try:
+            r = self.client.get(&#39;https://www.blast.hk/&#39;)
+            html = r.text
+            soup = bs4.BeautifulSoup(html, &#39;html.parser&#39;)
+            tab = soup.find(&#39;div&#39;, {&#39;data-group-id&#39;: &#39;second&#39;})
+            threads = []
+            regex = re.compile(&#39;structItem structItem--row.*&#39;)
+            items = tab.findAll(&#39;div&#39;, {&#39;class&#39;: regex})
+            for item in items:
+                link = item.find(&#39;div&#39;, {&#39;class&#39;: &#39;structItem-cell structItem-cell--main&#39;}).find(&#39;a&#39;).get(&#39;href&#39;)
+                threads.append(&#39;https://www.blast.hk{0}&#39;.format(link))
+            return threads
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+
+    def getLastUnreadThreads(self):
+        try:
+            r = self.client.get(&#39;https://www.blast.hk/&#39;)
+            html = r.text
+            soup = bs4.BeautifulSoup(html, &#39;html.parser&#39;)
+            tab = soup.find(&#39;div&#39;, {&#39;data-group-id&#39;: &#39;second&#39;})
+            threads = []
+            regex = re.compile(&#39;structItem structItem--row.*&#39;)
+            items = tab.findAll(&#39;div&#39;, {&#39;class&#39;: regex})
+            for item in items:
+                if &#39;is-unread&#39; in item.get(&#39;class&#39;):
+                    link = item.find(&#39;div&#39;, {&#39;class&#39;: &#39;structItem-cell structItem-cell--main&#39;}).find(&#39;a&#39;).get(&#39;href&#39;)
+                    threads.append(&#39;https://www.blast.hk{0}&#39;.format(link))
+            return threads
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+
+    def getMessagesInProfile(self, profileId: int):
+        try:
+            cMessages = []
+            r = self.client.get(&#39;https://www.blast.hk/members/{0}/&#39;.format(profileId))
+            html = r.text
+            soup = bs4.BeautifulSoup(html, &#39;html.parser&#39;)
+            messages = soup.find_all(&#39;div&#39;, {&#39;class&#39;: &#39;message-inner&#39;})
+            for message in messages:
+                cComments = []
+                nickname = message.find(&#39;h4&#39;)
+                if nickname != None and message.find(&#39;div&#39;, {&#39;class&#39;: &#39;messageNotice messageNotice--deleted&#39;}) == None:
+                    #print(message)
+                    messageId = message.find(&#39;div&#39;, {&#39;class&#39;: &#39;lbContainer js-lbContainer&#39;})[&#39;data-lb-id&#39;].split(&#39;-&#39;)
+                    messageId = int(messageId[len(messageId) - 1])
+                    nickname = nickname.text.replace(&#39;\n&#39;, &#39;&#39;).replace(&#39;\t&#39;, &#39;&#39;).replace(&#39;\r&#39;, &#39;&#39;)
+                    userId = int(message.find(&#39;a&#39;, {&#39;class&#39;: &#39;username&#39;})[&#39;data-user-id&#39;])
+                    text = message.find(&#39;div&#39;, {&#39;class&#39;: &#39;bbWrapper&#39;})
+                    msg = str(text)
+                    if msg.rfind(&#39;&lt;/blockquote&gt;&#39;) != -1:
+                        text = msg[msg.rfind(&#39;&lt;/blockquote&gt;&#39;) + len(&#39;&lt;/blockquote&gt;&#39;):len(msg)]
+                    else:
+                        text = text.text
+                    comments = message.findAll(lambda tag: tag.name == &#39;div&#39; and tag.get(&#39;class&#39;) == [&#39;message-responseRow&#39;])
+                    for comment in comments:
+                        #print(&#39;HERE: &#39; + str(comment))
+                        cComment = Comment(0, &#39;&#39;, &#39;&#39;, &#39;&#39;, 0)
+                        cComment.nickname = comment.find(&#39;div&#39;, {&#39;class&#39;: &#39;comment&#39;}).get(&#39;data-author&#39;)
+                        cComment.commentId = comment.find(&#39;div&#39;, {&#39;class&#39;: &#39;comment&#39;}).get(&#39;data-content&#39;).split(&#39;-&#39;)
+                        cComment.commentId = int(cComment.commentId[len(cComment.commentId) - 1])
+                        cComment.userId = int(comment.find(&#39;a&#39;, {&#39;class&#39;: &#39;username comment-user&#39;}).get(&#39;data-user-id&#39;))
+                        cComment.message = comment.find(&#39;div&#39;, {&#39;class&#39;: &#39;bbWrapper&#39;})
+                        cMsg = str(cComment.message)
+                        if cMsg.rfind(&#39;&lt;/blockquote&gt;&#39;) != -1:
+                            cComment.message = cMsg[cMsg.rfind(&#39;&lt;/blockquote&gt;&#39;) + len(&#39;&lt;/blockquote&gt;&#39;):len(cMsg)]
+                        else:
+                            cComment.message = cComment.message.text
+                        cComment.fullMessage = cMsg
+                        cComments.append(cComment)
+                    cMessages.append(ProfileMessage(userId, nickname, text, msg, cComments, messageId))
+            return cMessages
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+
+    def sendMessageInThread(self, thread: int, message: str):
+        try:
+            r = self.client.post(&#39;https://www.blast.hk/threads/{0}/add-reply&#39;.format(thread), data = {
+                &#39;message_html&#39;: message,
+                &#39;_xfToken&#39;: self.token,
+                &#39;_xfWithData&#39;: 1,
+                &#39;_xfResponseType&#39;: &#39;json&#39;
+            })
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+
+    def sendMessageInProfile(self, profileId: int, message: str):
+        try:
+            r = self.client.post(&#39;https://www.blast.hk/members/{0}/post&#39;.format(profileId), data = {
+                &#39;message_html&#39;: message,
+                &#39;_xfToken&#39;: self.token,
+                &#39;_xfWithData&#39;: 1,
+                &#39;_xfResponseType&#39;: &#39;json&#39;
+            })
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+
+    def getMessagesInThreadOnLastPage(self, thread: int):
+        try:
+            cMessages = []
+            r = self.client.get(&#39;https://www.blast.hk/threads/{0}/&#39;.format(thread))
+            html = r.text
+            soup = bs4.BeautifulSoup(html, &#39;html.parser&#39;)
+            lastPage = 1
+            try:
+                lastPage = soup.find(&#39;div&#39;, {&#39;class&#39;: &#39;inputGroup inputGroup--numbers&#39;}).find(&#39;input&#39;)[&#39;max&#39;]
+            except AttributeError:
+                pass
+            r = self.client.get(&#39;https://www.blast.hk/threads/{0}/page-{1}&#39;.format(thread, lastPage))
+            html = r.text
+            soup = bs4.BeautifulSoup(html, &#39;html.parser&#39;)
+            messages = soup.find_all(&#39;div&#39;, {&#39;class&#39;: &#39;message-inner&#39;})
+            for message in messages:
+                nickname = message.find(&#39;h4&#39;)
+                if nickname != None:
+                    messageId = message.find(&#39;div&#39;, {&#39;class&#39;: &#39;message-userContent lbContainer js-lbContainer&#39;})[&#39;data-lb-id&#39;].split(&#39;-&#39;)
+                    messageId = int(messageId[len(messageId) - 1])
+                    nickname = nickname.text.replace(&#39;\n&#39;, &#39;&#39;).replace(&#39;\t&#39;, &#39;&#39;).replace(&#39;\r&#39;, &#39;&#39;)
+                    userId = int(message.find(&#39;a&#39;, {&#39;class&#39;: &#39;username&#39;})[&#39;data-user-id&#39;])
+                    text = message.find(&#39;div&#39;, {&#39;class&#39;: &#39;bbWrapper&#39;})
+                    msg = str(text)
+                    if msg.rfind(&#39;&lt;/blockquote&gt;&#39;) != -1:
+                        text = msg[msg.rfind(&#39;&lt;/blockquote&gt;&#39;) + len(&#39;&lt;/blockquote&gt;&#39;):len(msg)]
+                    else:
+                        text = text.text
+                    cMessages.append(ThreadMessage(userId, nickname, text, msg, messageId))
+            return cMessages
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="bh.Account"><code class="flex name class">
+<span>class <span class="ident">Account</span></span>
+<span>(</span><span>login: str, password: str)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Account:
+    def __init__(self, login: str, password: str):
+        try:
+            self.login = login
+            self.password = password
+            self.id = 0
+            self.client = requests.session()
+            self.client.get(&#39;https://blast.hk/&#39;)
+            r = self.client.get(&#39;https://www.blast.hk/&#39;)
+            html = r.text
+            soup = bs4.BeautifulSoup(html, &#39;html.parser&#39;)
+            self.token = soup.find(&#39;input&#39;, {&#39;name&#39;: &#39;_xfToken&#39;})
+            if self.token == None:
+                raise ParseTokenError
+            else:
+                self.token = self.token[&#39;value&#39;]
+            #print(self.token)
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+
+    def twoFactorAuthorize(self, code):
+        try:
+            r = self.client.post(&#39;https://www.blast.hk/login/two-step&#39;, data = {
+                &#39;code&#39;: code,
+                &#39;trust&#39;: &#39;1&#39;,
+                &#39;confirm&#39;: &#39;1&#39;,
+                &#39;provider&#39;: &#39;totp&#39;,
+                &#39;remember&#39;: &#39;1&#39;,
+                &#39;_xfRedirect&#39;: &#39;https://www.blast.hk/&#39;,
+                &#39;_xfToken&#39;: self.token,
+                &#39;_xfRequestUri&#39;: &#39;/login/two-step?_xfRedirect=https%3A%2F%2Fwww.blast.hk%2F&amp;remember=1&#39;,
+                &#39;_xfWithData&#39;: &#39;1&#39;,
+                &#39;_xfResponseType&#39;: &#39;json&#39;
+            })
+            data = json.loads(r.text)
+            return data[&#39;status&#39;] == &#39;ok&#39;
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+        
+    def authorize(self):
+        try:
+            r = self.client.post(&#39;https://www.blast.hk/login/login&#39;, data = {
+                &#39;login&#39;: self.login,
+                &#39;password&#39;: self.password,
+                &#39;remember&#39;: 1,
+                &#39;_xfRedirect&#39;: &#39;https://www.blast.hk/&#39;,
+                &#39;_xfToken&#39;: self.token
+            })
+            if r.text.find(&#39;Некорректный пароль&#39;) == -1:
+                if r.url.find(&#39;two-step&#39;) != -1:
+                    try:
+                        while True:
+                            if self.twoFactorAuthorize(input(&#39;Enter 2auth code: &#39;)):
+                                break
+                            else:
+                                print(&#39;Invalid code!&#39;)
+                    except KeyboardInterrupt:
+                        return False
+                self.id = self.client.cookies.get_dict()[&#39;xf_user&#39;].split(&#39;%&#39;)[0]
+                return True
+            else:
+                return False
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+
+    def getUserAvatarLink(self, userId):
+        try:
+            r = self.client.get(&#39;https://www.blast.hk/members/{0}/&#39;.format(userId))
+            html = r.text
+            soup = bs4.BeautifulSoup(html, &#39;html.parser&#39;)
+            avatars = soup.find(&#39;span&#39;, {&#39;class&#39;: &#39;avatarWrapper&#39;}).findAll(&#39;a&#39;)
+            if avatars == None:
+                return None
+            else:
+                for avatar in avatars:
+                    link = avatar.get(&#39;href&#39;)
+                    if link.find(&#39;.jpg&#39;) != -1 or link.find(&#39;.png&#39;) != -1:
+                        #print(link)
+                        return &#39;https://www.blast.hk{0}&#39;.format(link)
+                return None
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+
+    def changeBanner(self, imageData):
+        file_dict = {&#39;upload&#39;: (&#39;photo.png&#39;, imageData)}
+        try:
+            r = self.client.post(&#39;https://www.blast.hk/account/banner&#39;, data = {
+                &#39;banner_position_y&#39;: &#39;50&#39;,
+                &#39;_xfToken&#39;: self.token,
+                &#39;_xfRequestUri&#39;: &#39;/members/{0}/&#39;.format(self.id),
+                &#39;_xfWithData&#39;: &#39;1&#39;,
+                &#39;_xfResponseType&#39;: &#39;json&#39;
+            },
+            files = file_dict)
+            data = json.loads(r.text)
+            #print(data)
+            return not (&#39;status&#39; in data)
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+
+    def isLoggedIn(self):
+        try:
+            r = self.client.get(&#39;https://www.blast.hk/&#39;)
+            return r.text.find(&#39;p-navgroup-link p-navgroup-link--textual p-navgroup-link--logIn&#39;) == -1
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+
+    def getMessagesInThread(self, thread: int):
+        try:
+            cMessages = []
+            r = self.client.get(&#39;https://www.blast.hk/threads/{0}/&#39;.format(thread))
+            html = r.text
+            soup = bs4.BeautifulSoup(html, &#39;html.parser&#39;)
+            messages = soup.find_all(&#39;div&#39;, {&#39;class&#39;: &#39;message-inner&#39;})
+            for message in messages:
+                nickname = message.find(&#39;h4&#39;)
+                if nickname != None:
+                    messageId = message.find(&#39;div&#39;, {&#39;class&#39;: &#39;message-userContent lbContainer js-lbContainer&#39;})[&#39;data-lb-id&#39;].split(&#39;-&#39;)
+                    messageId = int(messageId[len(messageId) - 1])
+                    nickname = nickname.text.replace(&#39;\n&#39;, &#39;&#39;).replace(&#39;\t&#39;, &#39;&#39;).replace(&#39;\r&#39;, &#39;&#39;)
+                    userId = int(message.find(&#39;a&#39;, {&#39;class&#39;: &#39;username&#39;})[&#39;data-user-id&#39;])
+                    text = message.find(&#39;div&#39;, {&#39;class&#39;: &#39;bbWrapper&#39;})
+                    msg = str(text)
+                    if msg.rfind(&#39;&lt;/blockquote&gt;&#39;) != -1:
+                        text = msg[msg.rfind(&#39;&lt;/blockquote&gt;&#39;) + len(&#39;&lt;/blockquote&gt;&#39;):len(msg)]
+                    else:
+                        text = text.text
+                    cMessages.append(ThreadMessage(userId, nickname, text, msg, messageId))
+            return cMessages
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+
+    def getLastThreads(self):
+        try:
+            r = self.client.get(&#39;https://www.blast.hk/&#39;)
+            html = r.text
+            soup = bs4.BeautifulSoup(html, &#39;html.parser&#39;)
+            tab = soup.find(&#39;div&#39;, {&#39;data-group-id&#39;: &#39;second&#39;})
+            threads = []
+            regex = re.compile(&#39;structItem structItem--row.*&#39;)
+            items = tab.findAll(&#39;div&#39;, {&#39;class&#39;: regex})
+            for item in items:
+                link = item.find(&#39;div&#39;, {&#39;class&#39;: &#39;structItem-cell structItem-cell--main&#39;}).find(&#39;a&#39;).get(&#39;href&#39;)
+                threads.append(&#39;https://www.blast.hk{0}&#39;.format(link))
+            return threads
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+
+    def getLastUnreadThreads(self):
+        try:
+            r = self.client.get(&#39;https://www.blast.hk/&#39;)
+            html = r.text
+            soup = bs4.BeautifulSoup(html, &#39;html.parser&#39;)
+            tab = soup.find(&#39;div&#39;, {&#39;data-group-id&#39;: &#39;second&#39;})
+            threads = []
+            regex = re.compile(&#39;structItem structItem--row.*&#39;)
+            items = tab.findAll(&#39;div&#39;, {&#39;class&#39;: regex})
+            for item in items:
+                if &#39;is-unread&#39; in item.get(&#39;class&#39;):
+                    link = item.find(&#39;div&#39;, {&#39;class&#39;: &#39;structItem-cell structItem-cell--main&#39;}).find(&#39;a&#39;).get(&#39;href&#39;)
+                    threads.append(&#39;https://www.blast.hk{0}&#39;.format(link))
+            return threads
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+
+    def getMessagesInProfile(self, profileId: int):
+        try:
+            cMessages = []
+            r = self.client.get(&#39;https://www.blast.hk/members/{0}/&#39;.format(profileId))
+            html = r.text
+            soup = bs4.BeautifulSoup(html, &#39;html.parser&#39;)
+            messages = soup.find_all(&#39;div&#39;, {&#39;class&#39;: &#39;message-inner&#39;})
+            for message in messages:
+                cComments = []
+                nickname = message.find(&#39;h4&#39;)
+                if nickname != None and message.find(&#39;div&#39;, {&#39;class&#39;: &#39;messageNotice messageNotice--deleted&#39;}) == None:
+                    #print(message)
+                    messageId = message.find(&#39;div&#39;, {&#39;class&#39;: &#39;lbContainer js-lbContainer&#39;})[&#39;data-lb-id&#39;].split(&#39;-&#39;)
+                    messageId = int(messageId[len(messageId) - 1])
+                    nickname = nickname.text.replace(&#39;\n&#39;, &#39;&#39;).replace(&#39;\t&#39;, &#39;&#39;).replace(&#39;\r&#39;, &#39;&#39;)
+                    userId = int(message.find(&#39;a&#39;, {&#39;class&#39;: &#39;username&#39;})[&#39;data-user-id&#39;])
+                    text = message.find(&#39;div&#39;, {&#39;class&#39;: &#39;bbWrapper&#39;})
+                    msg = str(text)
+                    if msg.rfind(&#39;&lt;/blockquote&gt;&#39;) != -1:
+                        text = msg[msg.rfind(&#39;&lt;/blockquote&gt;&#39;) + len(&#39;&lt;/blockquote&gt;&#39;):len(msg)]
+                    else:
+                        text = text.text
+                    comments = message.findAll(lambda tag: tag.name == &#39;div&#39; and tag.get(&#39;class&#39;) == [&#39;message-responseRow&#39;])
+                    for comment in comments:
+                        #print(&#39;HERE: &#39; + str(comment))
+                        cComment = Comment(0, &#39;&#39;, &#39;&#39;, &#39;&#39;, 0)
+                        cComment.nickname = comment.find(&#39;div&#39;, {&#39;class&#39;: &#39;comment&#39;}).get(&#39;data-author&#39;)
+                        cComment.commentId = comment.find(&#39;div&#39;, {&#39;class&#39;: &#39;comment&#39;}).get(&#39;data-content&#39;).split(&#39;-&#39;)
+                        cComment.commentId = int(cComment.commentId[len(cComment.commentId) - 1])
+                        cComment.userId = int(comment.find(&#39;a&#39;, {&#39;class&#39;: &#39;username comment-user&#39;}).get(&#39;data-user-id&#39;))
+                        cComment.message = comment.find(&#39;div&#39;, {&#39;class&#39;: &#39;bbWrapper&#39;})
+                        cMsg = str(cComment.message)
+                        if cMsg.rfind(&#39;&lt;/blockquote&gt;&#39;) != -1:
+                            cComment.message = cMsg[cMsg.rfind(&#39;&lt;/blockquote&gt;&#39;) + len(&#39;&lt;/blockquote&gt;&#39;):len(cMsg)]
+                        else:
+                            cComment.message = cComment.message.text
+                        cComment.fullMessage = cMsg
+                        cComments.append(cComment)
+                    cMessages.append(ProfileMessage(userId, nickname, text, msg, cComments, messageId))
+            return cMessages
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+
+    def sendMessageInThread(self, thread: int, message: str):
+        try:
+            r = self.client.post(&#39;https://www.blast.hk/threads/{0}/add-reply&#39;.format(thread), data = {
+                &#39;message_html&#39;: message,
+                &#39;_xfToken&#39;: self.token,
+                &#39;_xfWithData&#39;: 1,
+                &#39;_xfResponseType&#39;: &#39;json&#39;
+            })
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+
+    def sendMessageInProfile(self, profileId: int, message: str):
+        try:
+            r = self.client.post(&#39;https://www.blast.hk/members/{0}/post&#39;.format(profileId), data = {
+                &#39;message_html&#39;: message,
+                &#39;_xfToken&#39;: self.token,
+                &#39;_xfWithData&#39;: 1,
+                &#39;_xfResponseType&#39;: &#39;json&#39;
+            })
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+
+    def getMessagesInThreadOnLastPage(self, thread: int):
+        try:
+            cMessages = []
+            r = self.client.get(&#39;https://www.blast.hk/threads/{0}/&#39;.format(thread))
+            html = r.text
+            soup = bs4.BeautifulSoup(html, &#39;html.parser&#39;)
+            lastPage = 1
+            try:
+                lastPage = soup.find(&#39;div&#39;, {&#39;class&#39;: &#39;inputGroup inputGroup--numbers&#39;}).find(&#39;input&#39;)[&#39;max&#39;]
+            except AttributeError:
+                pass
+            r = self.client.get(&#39;https://www.blast.hk/threads/{0}/page-{1}&#39;.format(thread, lastPage))
+            html = r.text
+            soup = bs4.BeautifulSoup(html, &#39;html.parser&#39;)
+            messages = soup.find_all(&#39;div&#39;, {&#39;class&#39;: &#39;message-inner&#39;})
+            for message in messages:
+                nickname = message.find(&#39;h4&#39;)
+                if nickname != None:
+                    messageId = message.find(&#39;div&#39;, {&#39;class&#39;: &#39;message-userContent lbContainer js-lbContainer&#39;})[&#39;data-lb-id&#39;].split(&#39;-&#39;)
+                    messageId = int(messageId[len(messageId) - 1])
+                    nickname = nickname.text.replace(&#39;\n&#39;, &#39;&#39;).replace(&#39;\t&#39;, &#39;&#39;).replace(&#39;\r&#39;, &#39;&#39;)
+                    userId = int(message.find(&#39;a&#39;, {&#39;class&#39;: &#39;username&#39;})[&#39;data-user-id&#39;])
+                    text = message.find(&#39;div&#39;, {&#39;class&#39;: &#39;bbWrapper&#39;})
+                    msg = str(text)
+                    if msg.rfind(&#39;&lt;/blockquote&gt;&#39;) != -1:
+                        text = msg[msg.rfind(&#39;&lt;/blockquote&gt;&#39;) + len(&#39;&lt;/blockquote&gt;&#39;):len(msg)]
+                    else:
+                        text = text.text
+                    cMessages.append(ThreadMessage(userId, nickname, text, msg, messageId))
+            return cMessages
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="bh.Account.authorize"><code class="name flex">
+<span>def <span class="ident">authorize</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def authorize(self):
+    try:
+        r = self.client.post(&#39;https://www.blast.hk/login/login&#39;, data = {
+            &#39;login&#39;: self.login,
+            &#39;password&#39;: self.password,
+            &#39;remember&#39;: 1,
+            &#39;_xfRedirect&#39;: &#39;https://www.blast.hk/&#39;,
+            &#39;_xfToken&#39;: self.token
+        })
+        if r.text.find(&#39;Некорректный пароль&#39;) == -1:
+            if r.url.find(&#39;two-step&#39;) != -1:
+                try:
+                    while True:
+                        if self.twoFactorAuthorize(input(&#39;Enter 2auth code: &#39;)):
+                            break
+                        else:
+                            print(&#39;Invalid code!&#39;)
+                except KeyboardInterrupt:
+                    return False
+            self.id = self.client.cookies.get_dict()[&#39;xf_user&#39;].split(&#39;%&#39;)[0]
+            return True
+        else:
+            return False
+    except requests.RequestException as e:
+        traceback.print_exception(e)
+        pass</code></pre>
+</details>
+</dd>
+<dt id="bh.Account.changeBanner"><code class="name flex">
+<span>def <span class="ident">changeBanner</span></span>(<span>self, imageData)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def changeBanner(self, imageData):
+    file_dict = {&#39;upload&#39;: (&#39;photo.png&#39;, imageData)}
+    try:
+        r = self.client.post(&#39;https://www.blast.hk/account/banner&#39;, data = {
+            &#39;banner_position_y&#39;: &#39;50&#39;,
+            &#39;_xfToken&#39;: self.token,
+            &#39;_xfRequestUri&#39;: &#39;/members/{0}/&#39;.format(self.id),
+            &#39;_xfWithData&#39;: &#39;1&#39;,
+            &#39;_xfResponseType&#39;: &#39;json&#39;
+        },
+        files = file_dict)
+        data = json.loads(r.text)
+        #print(data)
+        return not (&#39;status&#39; in data)
+    except requests.RequestException as e:
+        traceback.print_exception(e)
+        pass</code></pre>
+</details>
+</dd>
+<dt id="bh.Account.getLastThreads"><code class="name flex">
+<span>def <span class="ident">getLastThreads</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getLastThreads(self):
+    try:
+        r = self.client.get(&#39;https://www.blast.hk/&#39;)
+        html = r.text
+        soup = bs4.BeautifulSoup(html, &#39;html.parser&#39;)
+        tab = soup.find(&#39;div&#39;, {&#39;data-group-id&#39;: &#39;second&#39;})
+        threads = []
+        regex = re.compile(&#39;structItem structItem--row.*&#39;)
+        items = tab.findAll(&#39;div&#39;, {&#39;class&#39;: regex})
+        for item in items:
+            link = item.find(&#39;div&#39;, {&#39;class&#39;: &#39;structItem-cell structItem-cell--main&#39;}).find(&#39;a&#39;).get(&#39;href&#39;)
+            threads.append(&#39;https://www.blast.hk{0}&#39;.format(link))
+        return threads
+    except requests.RequestException as e:
+        traceback.print_exception(e)
+        pass</code></pre>
+</details>
+</dd>
+<dt id="bh.Account.getLastUnreadThreads"><code class="name flex">
+<span>def <span class="ident">getLastUnreadThreads</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getLastUnreadThreads(self):
+    try:
+        r = self.client.get(&#39;https://www.blast.hk/&#39;)
+        html = r.text
+        soup = bs4.BeautifulSoup(html, &#39;html.parser&#39;)
+        tab = soup.find(&#39;div&#39;, {&#39;data-group-id&#39;: &#39;second&#39;})
+        threads = []
+        regex = re.compile(&#39;structItem structItem--row.*&#39;)
+        items = tab.findAll(&#39;div&#39;, {&#39;class&#39;: regex})
+        for item in items:
+            if &#39;is-unread&#39; in item.get(&#39;class&#39;):
+                link = item.find(&#39;div&#39;, {&#39;class&#39;: &#39;structItem-cell structItem-cell--main&#39;}).find(&#39;a&#39;).get(&#39;href&#39;)
+                threads.append(&#39;https://www.blast.hk{0}&#39;.format(link))
+        return threads
+    except requests.RequestException as e:
+        traceback.print_exception(e)
+        pass</code></pre>
+</details>
+</dd>
+<dt id="bh.Account.getMessagesInProfile"><code class="name flex">
+<span>def <span class="ident">getMessagesInProfile</span></span>(<span>self, profileId: int)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getMessagesInProfile(self, profileId: int):
+    try:
+        cMessages = []
+        r = self.client.get(&#39;https://www.blast.hk/members/{0}/&#39;.format(profileId))
+        html = r.text
+        soup = bs4.BeautifulSoup(html, &#39;html.parser&#39;)
+        messages = soup.find_all(&#39;div&#39;, {&#39;class&#39;: &#39;message-inner&#39;})
+        for message in messages:
+            cComments = []
+            nickname = message.find(&#39;h4&#39;)
+            if nickname != None and message.find(&#39;div&#39;, {&#39;class&#39;: &#39;messageNotice messageNotice--deleted&#39;}) == None:
+                #print(message)
+                messageId = message.find(&#39;div&#39;, {&#39;class&#39;: &#39;lbContainer js-lbContainer&#39;})[&#39;data-lb-id&#39;].split(&#39;-&#39;)
+                messageId = int(messageId[len(messageId) - 1])
+                nickname = nickname.text.replace(&#39;\n&#39;, &#39;&#39;).replace(&#39;\t&#39;, &#39;&#39;).replace(&#39;\r&#39;, &#39;&#39;)
+                userId = int(message.find(&#39;a&#39;, {&#39;class&#39;: &#39;username&#39;})[&#39;data-user-id&#39;])
+                text = message.find(&#39;div&#39;, {&#39;class&#39;: &#39;bbWrapper&#39;})
+                msg = str(text)
+                if msg.rfind(&#39;&lt;/blockquote&gt;&#39;) != -1:
+                    text = msg[msg.rfind(&#39;&lt;/blockquote&gt;&#39;) + len(&#39;&lt;/blockquote&gt;&#39;):len(msg)]
+                else:
+                    text = text.text
+                comments = message.findAll(lambda tag: tag.name == &#39;div&#39; and tag.get(&#39;class&#39;) == [&#39;message-responseRow&#39;])
+                for comment in comments:
+                    #print(&#39;HERE: &#39; + str(comment))
+                    cComment = Comment(0, &#39;&#39;, &#39;&#39;, &#39;&#39;, 0)
+                    cComment.nickname = comment.find(&#39;div&#39;, {&#39;class&#39;: &#39;comment&#39;}).get(&#39;data-author&#39;)
+                    cComment.commentId = comment.find(&#39;div&#39;, {&#39;class&#39;: &#39;comment&#39;}).get(&#39;data-content&#39;).split(&#39;-&#39;)
+                    cComment.commentId = int(cComment.commentId[len(cComment.commentId) - 1])
+                    cComment.userId = int(comment.find(&#39;a&#39;, {&#39;class&#39;: &#39;username comment-user&#39;}).get(&#39;data-user-id&#39;))
+                    cComment.message = comment.find(&#39;div&#39;, {&#39;class&#39;: &#39;bbWrapper&#39;})
+                    cMsg = str(cComment.message)
+                    if cMsg.rfind(&#39;&lt;/blockquote&gt;&#39;) != -1:
+                        cComment.message = cMsg[cMsg.rfind(&#39;&lt;/blockquote&gt;&#39;) + len(&#39;&lt;/blockquote&gt;&#39;):len(cMsg)]
+                    else:
+                        cComment.message = cComment.message.text
+                    cComment.fullMessage = cMsg
+                    cComments.append(cComment)
+                cMessages.append(ProfileMessage(userId, nickname, text, msg, cComments, messageId))
+        return cMessages
+    except requests.RequestException as e:
+        traceback.print_exception(e)
+        pass</code></pre>
+</details>
+</dd>
+<dt id="bh.Account.getMessagesInThread"><code class="name flex">
+<span>def <span class="ident">getMessagesInThread</span></span>(<span>self, thread: int)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getMessagesInThread(self, thread: int):
+    try:
+        cMessages = []
+        r = self.client.get(&#39;https://www.blast.hk/threads/{0}/&#39;.format(thread))
+        html = r.text
+        soup = bs4.BeautifulSoup(html, &#39;html.parser&#39;)
+        messages = soup.find_all(&#39;div&#39;, {&#39;class&#39;: &#39;message-inner&#39;})
+        for message in messages:
+            nickname = message.find(&#39;h4&#39;)
+            if nickname != None:
+                messageId = message.find(&#39;div&#39;, {&#39;class&#39;: &#39;message-userContent lbContainer js-lbContainer&#39;})[&#39;data-lb-id&#39;].split(&#39;-&#39;)
+                messageId = int(messageId[len(messageId) - 1])
+                nickname = nickname.text.replace(&#39;\n&#39;, &#39;&#39;).replace(&#39;\t&#39;, &#39;&#39;).replace(&#39;\r&#39;, &#39;&#39;)
+                userId = int(message.find(&#39;a&#39;, {&#39;class&#39;: &#39;username&#39;})[&#39;data-user-id&#39;])
+                text = message.find(&#39;div&#39;, {&#39;class&#39;: &#39;bbWrapper&#39;})
+                msg = str(text)
+                if msg.rfind(&#39;&lt;/blockquote&gt;&#39;) != -1:
+                    text = msg[msg.rfind(&#39;&lt;/blockquote&gt;&#39;) + len(&#39;&lt;/blockquote&gt;&#39;):len(msg)]
+                else:
+                    text = text.text
+                cMessages.append(ThreadMessage(userId, nickname, text, msg, messageId))
+        return cMessages
+    except requests.RequestException as e:
+        traceback.print_exception(e)
+        pass</code></pre>
+</details>
+</dd>
+<dt id="bh.Account.getMessagesInThreadOnLastPage"><code class="name flex">
+<span>def <span class="ident">getMessagesInThreadOnLastPage</span></span>(<span>self, thread: int)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getMessagesInThreadOnLastPage(self, thread: int):
+    try:
+        cMessages = []
+        r = self.client.get(&#39;https://www.blast.hk/threads/{0}/&#39;.format(thread))
+        html = r.text
+        soup = bs4.BeautifulSoup(html, &#39;html.parser&#39;)
+        lastPage = 1
+        try:
+            lastPage = soup.find(&#39;div&#39;, {&#39;class&#39;: &#39;inputGroup inputGroup--numbers&#39;}).find(&#39;input&#39;)[&#39;max&#39;]
+        except AttributeError:
+            pass
+        r = self.client.get(&#39;https://www.blast.hk/threads/{0}/page-{1}&#39;.format(thread, lastPage))
+        html = r.text
+        soup = bs4.BeautifulSoup(html, &#39;html.parser&#39;)
+        messages = soup.find_all(&#39;div&#39;, {&#39;class&#39;: &#39;message-inner&#39;})
+        for message in messages:
+            nickname = message.find(&#39;h4&#39;)
+            if nickname != None:
+                messageId = message.find(&#39;div&#39;, {&#39;class&#39;: &#39;message-userContent lbContainer js-lbContainer&#39;})[&#39;data-lb-id&#39;].split(&#39;-&#39;)
+                messageId = int(messageId[len(messageId) - 1])
+                nickname = nickname.text.replace(&#39;\n&#39;, &#39;&#39;).replace(&#39;\t&#39;, &#39;&#39;).replace(&#39;\r&#39;, &#39;&#39;)
+                userId = int(message.find(&#39;a&#39;, {&#39;class&#39;: &#39;username&#39;})[&#39;data-user-id&#39;])
+                text = message.find(&#39;div&#39;, {&#39;class&#39;: &#39;bbWrapper&#39;})
+                msg = str(text)
+                if msg.rfind(&#39;&lt;/blockquote&gt;&#39;) != -1:
+                    text = msg[msg.rfind(&#39;&lt;/blockquote&gt;&#39;) + len(&#39;&lt;/blockquote&gt;&#39;):len(msg)]
+                else:
+                    text = text.text
+                cMessages.append(ThreadMessage(userId, nickname, text, msg, messageId))
+        return cMessages
+    except requests.RequestException as e:
+        traceback.print_exception(e)
+        pass</code></pre>
+</details>
+</dd>
+<dt id="bh.Account.getUserAvatarLink"><code class="name flex">
+<span>def <span class="ident">getUserAvatarLink</span></span>(<span>self, userId)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getUserAvatarLink(self, userId):
+    try:
+        r = self.client.get(&#39;https://www.blast.hk/members/{0}/&#39;.format(userId))
+        html = r.text
+        soup = bs4.BeautifulSoup(html, &#39;html.parser&#39;)
+        avatars = soup.find(&#39;span&#39;, {&#39;class&#39;: &#39;avatarWrapper&#39;}).findAll(&#39;a&#39;)
+        if avatars == None:
+            return None
+        else:
+            for avatar in avatars:
+                link = avatar.get(&#39;href&#39;)
+                if link.find(&#39;.jpg&#39;) != -1 or link.find(&#39;.png&#39;) != -1:
+                    #print(link)
+                    return &#39;https://www.blast.hk{0}&#39;.format(link)
+            return None
+    except requests.RequestException as e:
+        traceback.print_exception(e)
+        pass</code></pre>
+</details>
+</dd>
+<dt id="bh.Account.isLoggedIn"><code class="name flex">
+<span>def <span class="ident">isLoggedIn</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def isLoggedIn(self):
+    try:
+        r = self.client.get(&#39;https://www.blast.hk/&#39;)
+        return r.text.find(&#39;p-navgroup-link p-navgroup-link--textual p-navgroup-link--logIn&#39;) == -1
+    except requests.RequestException as e:
+        traceback.print_exception(e)
+        pass</code></pre>
+</details>
+</dd>
+<dt id="bh.Account.sendMessageInProfile"><code class="name flex">
+<span>def <span class="ident">sendMessageInProfile</span></span>(<span>self, profileId: int, message: str)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sendMessageInProfile(self, profileId: int, message: str):
+    try:
+        r = self.client.post(&#39;https://www.blast.hk/members/{0}/post&#39;.format(profileId), data = {
+            &#39;message_html&#39;: message,
+            &#39;_xfToken&#39;: self.token,
+            &#39;_xfWithData&#39;: 1,
+            &#39;_xfResponseType&#39;: &#39;json&#39;
+        })
+    except requests.RequestException as e:
+        traceback.print_exception(e)
+        pass</code></pre>
+</details>
+</dd>
+<dt id="bh.Account.sendMessageInThread"><code class="name flex">
+<span>def <span class="ident">sendMessageInThread</span></span>(<span>self, thread: int, message: str)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sendMessageInThread(self, thread: int, message: str):
+    try:
+        r = self.client.post(&#39;https://www.blast.hk/threads/{0}/add-reply&#39;.format(thread), data = {
+            &#39;message_html&#39;: message,
+            &#39;_xfToken&#39;: self.token,
+            &#39;_xfWithData&#39;: 1,
+            &#39;_xfResponseType&#39;: &#39;json&#39;
+        })
+    except requests.RequestException as e:
+        traceback.print_exception(e)
+        pass</code></pre>
+</details>
+</dd>
+<dt id="bh.Account.twoFactorAuthorize"><code class="name flex">
+<span>def <span class="ident">twoFactorAuthorize</span></span>(<span>self, code)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def twoFactorAuthorize(self, code):
+    try:
+        r = self.client.post(&#39;https://www.blast.hk/login/two-step&#39;, data = {
+            &#39;code&#39;: code,
+            &#39;trust&#39;: &#39;1&#39;,
+            &#39;confirm&#39;: &#39;1&#39;,
+            &#39;provider&#39;: &#39;totp&#39;,
+            &#39;remember&#39;: &#39;1&#39;,
+            &#39;_xfRedirect&#39;: &#39;https://www.blast.hk/&#39;,
+            &#39;_xfToken&#39;: self.token,
+            &#39;_xfRequestUri&#39;: &#39;/login/two-step?_xfRedirect=https%3A%2F%2Fwww.blast.hk%2F&amp;remember=1&#39;,
+            &#39;_xfWithData&#39;: &#39;1&#39;,
+            &#39;_xfResponseType&#39;: &#39;json&#39;
+        })
+        data = json.loads(r.text)
+        return data[&#39;status&#39;] == &#39;ok&#39;
+    except requests.RequestException as e:
+        traceback.print_exception(e)
+        pass</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="bh.Comment"><code class="flex name class">
+<span>class <span class="ident">Comment</span></span>
+<span>(</span><span>userId, nickname, message, fullMessage, commentId)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Comment:
+    def __init__(self, userId, nickname, message, fullMessage, commentId):
+        self.commentId = commentId
+        self.userId = userId
+        self.nickname = nickname
+        self.message = message
+        self.fullMessage = fullMessage</code></pre>
+</details>
+</dd>
+<dt id="bh.Error"><code class="flex name class">
+<span>class <span class="ident">Error</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for other exceptions</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Error(Exception):
+    &#34;&#34;&#34;Base class for other exceptions&#34;&#34;&#34;
+    pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="bh.ParseTokenError" href="#bh.ParseTokenError">ParseTokenError</a></li>
+</ul>
+</dd>
+<dt id="bh.ParseTokenError"><code class="flex name class">
+<span>class <span class="ident">ParseTokenError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Token can`t be parsed</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ParseTokenError(Error):
+    &#34;&#34;&#34;Token can`t be parsed&#34;&#34;&#34;
+    pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="bh.Error" href="#bh.Error">Error</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="bh.ProfileMessage"><code class="flex name class">
+<span>class <span class="ident">ProfileMessage</span></span>
+<span>(</span><span>userId: int, nickname: str, message: str, fullMessage, comments, messageId)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ProfileMessage:
+    def __init__(self, userId: int, nickname: str, message: str, fullMessage, comments, messageId):
+        self.messageId = messageId
+        self.userId = userId
+        self.nickname = nickname
+        self.message = message
+        self.comments = comments
+        self.fullMessage = fullMessage</code></pre>
+</details>
+</dd>
+<dt id="bh.ThreadMessage"><code class="flex name class">
+<span>class <span class="ident">ThreadMessage</span></span>
+<span>(</span><span>userId: int, nickname: str, message: str, fullMessage, messageId)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ThreadMessage:
+    def __init__(self, userId: int, nickname: str, message: str, fullMessage, messageId):
+        self.messageId = messageId
+        self.userId = userId
+        self.nickname = nickname
+        self.message = message
+        self.fullMessage = fullMessage</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="bh.Account" href="#bh.Account">Account</a></code></h4>
+<ul class="">
+<li><code><a title="bh.Account.authorize" href="#bh.Account.authorize">authorize</a></code></li>
+<li><code><a title="bh.Account.changeBanner" href="#bh.Account.changeBanner">changeBanner</a></code></li>
+<li><code><a title="bh.Account.getLastThreads" href="#bh.Account.getLastThreads">getLastThreads</a></code></li>
+<li><code><a title="bh.Account.getLastUnreadThreads" href="#bh.Account.getLastUnreadThreads">getLastUnreadThreads</a></code></li>
+<li><code><a title="bh.Account.getMessagesInProfile" href="#bh.Account.getMessagesInProfile">getMessagesInProfile</a></code></li>
+<li><code><a title="bh.Account.getMessagesInThread" href="#bh.Account.getMessagesInThread">getMessagesInThread</a></code></li>
+<li><code><a title="bh.Account.getMessagesInThreadOnLastPage" href="#bh.Account.getMessagesInThreadOnLastPage">getMessagesInThreadOnLastPage</a></code></li>
+<li><code><a title="bh.Account.getUserAvatarLink" href="#bh.Account.getUserAvatarLink">getUserAvatarLink</a></code></li>
+<li><code><a title="bh.Account.isLoggedIn" href="#bh.Account.isLoggedIn">isLoggedIn</a></code></li>
+<li><code><a title="bh.Account.sendMessageInProfile" href="#bh.Account.sendMessageInProfile">sendMessageInProfile</a></code></li>
+<li><code><a title="bh.Account.sendMessageInThread" href="#bh.Account.sendMessageInThread">sendMessageInThread</a></code></li>
+<li><code><a title="bh.Account.twoFactorAuthorize" href="#bh.Account.twoFactorAuthorize">twoFactorAuthorize</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="bh.Comment" href="#bh.Comment">Comment</a></code></h4>
+</li>
+<li>
+<h4><code><a title="bh.Error" href="#bh.Error">Error</a></code></h4>
+</li>
+<li>
+<h4><code><a title="bh.ParseTokenError" href="#bh.ParseTokenError">ParseTokenError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="bh.ProfileMessage" href="#bh.ProfileMessage">ProfileMessage</a></code></h4>
+</li>
+<li>
+<h4><code><a title="bh.ThreadMessage" href="#bh.ThreadMessage">ThreadMessage</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>
