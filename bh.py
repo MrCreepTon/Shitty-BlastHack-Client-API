@@ -56,8 +56,8 @@ class Account:
             else:
                 self.token = self.token['value']
             #print(self.token)
-        except requests.RequestException as e:
-            traceback.print_exception(e)
+        except requests.RequestException:
+            traceback.print_exc()
             pass
 
     def twoFactorAuthorize(self, code):
@@ -76,8 +76,8 @@ class Account:
             })
             data = json.loads(r.text)
             return data['status'] == 'ok'
-        except requests.RequestException as e:
-            traceback.print_exception(e)
+        except requests.RequestException:
+            traceback.print_exc()
             pass
         
     def authorize(self):
@@ -103,8 +103,8 @@ class Account:
                 return True
             else:
                 return False
-        except requests.RequestException as e:
-            traceback.print_exception(e)
+        except requests.RequestException:
+            traceback.print_exc()
             pass
 
     def getUserAvatarLink(self, userId):
@@ -122,8 +122,8 @@ class Account:
                         #print(link)
                         return 'https://www.blast.hk{0}'.format(link)
                 return None
-        except requests.RequestException as e:
-            traceback.print_exception(e)
+        except requests.RequestException:
+            traceback.print_exc()
             pass
 
     def changeBanner(self, imageData):
@@ -140,16 +140,16 @@ class Account:
             data = json.loads(r.text)
             #print(data)
             return not ('status' in data)
-        except requests.RequestException as e:
-            traceback.print_exception(e)
+        except requests.RequestException:
+            traceback.print_exc()
             pass
 
     def isLoggedIn(self):
         try:
             r = self.client.get('https://www.blast.hk/')
             return r.text.find('p-navgroup-link p-navgroup-link--textual p-navgroup-link--logIn') == -1
-        except requests.RequestException as e:
-            traceback.print_exception(e)
+        except requests.RequestException:
+            traceback.print_exc()
             pass
 
     def getMessagesInThread(self, thread: int):
@@ -174,8 +174,8 @@ class Account:
                         text = text.text
                     cMessages.append(ThreadMessage(userId, nickname, text, msg, messageId))
             return cMessages
-        except requests.RequestException as e:
-            traceback.print_exception(e)
+        except requests.RequestException:
+            traceback.print_exc()
             pass
 
     def getLastThreads(self):
@@ -191,8 +191,8 @@ class Account:
                 link = item.find('div', {'class': 'structItem-cell structItem-cell--main'}).find('a').get('href')
                 threads.append('https://www.blast.hk{0}'.format(link))
             return threads
-        except requests.RequestException as e:
-            traceback.print_exception(e)
+        except requests.RequestException:
+            traceback.print_exc()
             pass
 
     def getLastUnreadThreads(self):
@@ -209,8 +209,8 @@ class Account:
                     link = item.find('div', {'class': 'structItem-cell structItem-cell--main'}).find('a').get('href')
                     threads.append('https://www.blast.hk{0}'.format(link))
             return threads
-        except requests.RequestException as e:
-            traceback.print_exception(e)
+        except requests.RequestException:
+            traceback.print_exc()
             pass
 
     def getMessagesInProfile(self, profileId: int):
@@ -253,8 +253,8 @@ class Account:
                         cComments.append(cComment)
                     cMessages.append(ProfileMessage(userId, nickname, text, msg, cComments, messageId))
             return cMessages
-        except requests.RequestException as e:
-            traceback.print_exception(e)
+        except requests.RequestException:
+            traceback.print_exc()
             pass
 
     def sendMessageInThread(self, thread: int, message: str):
@@ -265,8 +265,8 @@ class Account:
                 '_xfWithData': 1,
                 '_xfResponseType': 'json'
             })
-        except requests.RequestException as e:
-            traceback.print_exception(e)
+        except requests.RequestException:
+            traceback.print_exc()
             pass
 
     def sendMessageInProfile(self, profileId: int, message: str):
@@ -277,8 +277,8 @@ class Account:
                 '_xfWithData': 1,
                 '_xfResponseType': 'json'
             })
-        except requests.RequestException as e:
-            traceback.print_exception(e)
+        except requests.RequestException:
+            traceback.print_exc()
             pass
 
     def getMessagesInThreadOnLastPage(self, thread: int):
@@ -311,7 +311,7 @@ class Account:
                         text = text.text
                     cMessages.append(ThreadMessage(userId, nickname, text, msg, messageId))
             return cMessages
-        except requests.RequestException as e:
-            traceback.print_exception(e)
+        except requests.RequestException:
+            traceback.print_exc()
             pass
 
