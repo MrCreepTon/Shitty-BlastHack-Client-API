@@ -280,7 +280,22 @@ class Account:
         except requests.RequestException:
             traceback.print_exc()
             pass
-
+        
+    def editMessageInProfile(self, postId: int, profileId: int, message: str):
+        try:
+            r = self.client.post('https://www.blast.hk/profile-posts/{0}/edit'.format(postId), data = {
+                'message_html': message,
+                '_xfInlineEdit': 1,
+                '_xfToken': self.token,
+                '_xfRequestUri': '/members/{0}/'.format(profileId),
+                '_xfWithData': 1,
+                '_xfToken': self.token,
+                '_xfResponseType': 'json'
+            })
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+        
     def getMessagesInThreadOnLastPage(self, thread: int):
         try:
             cMessages = []
