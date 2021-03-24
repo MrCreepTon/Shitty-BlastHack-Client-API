@@ -40,21 +40,24 @@ class ThreadMessage:
         self.fullMessage = fullMessage
 
 class Account:
+    def updateToken(self):
+        self.client.get('https://blast.hk/')
+        r = self.client.get('https://www.blast.hk/')
+        html = r.text
+        soup = bs4.BeautifulSoup(html, 'html.parser')
+        self.token = soup.find('input', {'name': '_xfToken'})
+        if self.token == None:
+            raise ParseTokenError
+        else:
+            self.token = self.token['value']
+
     def __init__(self, login: str, password: str):
         try:
             self.login = login
             self.password = password
             self.id = 0
             self.client = requests.session()
-            self.client.get('https://blast.hk/')
-            r = self.client.get('https://www.blast.hk/')
-            html = r.text
-            soup = bs4.BeautifulSoup(html, 'html.parser')
-            self.token = soup.find('input', {'name': '_xfToken'})
-            if self.token == None:
-                raise ParseTokenError
-            else:
-                self.token = self.token['value']
+            self.updateToken()
             #print(self.token)
         except requests.RequestException:
             traceback.print_exc()
@@ -62,6 +65,7 @@ class Account:
 
     def twoFactorAuthorize(self, code):
         try:
+            self.updateToken()
             r = self.client.post('https://www.blast.hk/login/two-step', data = {
                 'code': code,
                 'trust': '1',
@@ -82,6 +86,7 @@ class Account:
         
     def authorize(self):
         try:
+            self.updateToken()
             r = self.client.post('https://www.blast.hk/login/login', data = {
                 'login': self.login,
                 'password': self.password,
@@ -109,6 +114,7 @@ class Account:
 
     def getUserAvatarLink(self, userId):
         try:
+            self.updateToken()
             r = self.client.get('https://www.blast.hk/members/{0}/'.format(userId))
             html = r.text
             soup = bs4.BeautifulSoup(html, 'html.parser')
@@ -129,6 +135,7 @@ class Account:
     def changeBanner(self, imageData):
         file_dict = {'upload': ('photo.png', imageData)}
         try:
+            self.updateToken()
             r = self.client.post('https://www.blast.hk/account/banner', data = {
                 'banner_position_y': '50',
                 '_xfToken': self.token,
@@ -146,6 +153,7 @@ class Account:
 
     def isLoggedIn(self):
         try:
+            self.updateToken()
             r = self.client.get('https://www.blast.hk/')
             return r.text.find('p-navgroup-link p-navgroup-link--textual p-navgroup-link--logIn') == -1
         except requests.RequestException:
@@ -154,6 +162,7 @@ class Account:
 
     def getMessagesInThread(self, thread: int):
         try:
+            self.updateToken()
             cMessages = []
             r = self.client.get('https://www.blast.hk/threads/{0}/'.format(thread))
             html = r.text
@@ -180,6 +189,7 @@ class Account:
 
     def getLastThreads(self):
         try:
+            self.updateToken()
             r = self.client.get('https://www.blast.hk/')
             html = r.text
             soup = bs4.BeautifulSoup(html, 'html.parser')
@@ -197,6 +207,7 @@ class Account:
 
     def getLastUnreadThreads(self):
         try:
+            self.updateToken()
             r = self.client.get('https://www.blast.hk/')
             html = r.text
             soup = bs4.BeautifulSoup(html, 'html.parser')
@@ -215,6 +226,7 @@ class Account:
 
     def getMessagesInProfile(self, profileId: int):
         try:
+            self.updateToken()
             cMessages = []
             r = self.client.get('https://www.blast.hk/members/{0}/'.format(profileId))
             html = r.text
@@ -259,6 +271,7 @@ class Account:
 
     def sendMessageInThread(self, thread: int, message: str):
         try:
+            self.updateToken()
             r = self.client.post('https://www.blast.hk/threads/{0}/add-reply'.format(thread), data = {
                 'message_html': message,
                 '_xfToken': self.token,
@@ -271,6 +284,7 @@ class Account:
 
     def sendMessageInProfile(self, profileId: int, message: str):
         try:
+            self.updateToken()
             r = self.client.post('https://www.blast.hk/members/{0}/post'.format(profileId), data = {
                 'message_html': message,
                 '_xfToken': self.token,
@@ -281,8 +295,25 @@ class Account:
             traceback.print_exc()
             pass
 
+    def editMessageInProfile(self, postId: int, profileId: int, message: str):
+        try:
+            self.updateToken()
+            r = self.client.post('https://www.blast.hk/profile-posts/{0}/edit'.format(postId), data = {
+                'message_html': message,
+                '_xfInlineEdit': 1,
+                '_xfToken': self.token,
+                '_xfRequestUri': '/members/{0}/'.format(profileId),
+                '_xfWithData': 1,
+                '_xfToken': self.token,
+                '_xfResponseType': 'json'
+            })
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+
     def getMessagesInThreadOnLastPage(self, thread: int):
         try:
+            self.updateToken()
             cMessages = []
             r = self.client.get('https://www.blast.hk/threads/{0}/'.format(thread))
             html = r.text
