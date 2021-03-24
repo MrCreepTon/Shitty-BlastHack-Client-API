@@ -14,6 +14,27 @@ class ParseTokenError(Error):
     """Token can`t be parsed"""
     pass
 
+class ProfileInfo:
+    def __init__(self):
+        self.receive_admin_email = ''
+        self.activity_summary_email = ''
+        self.show_dob_date = ''
+        self.custom_title = ''
+        self.location = ''
+        self.website = ''
+        self.about = ''
+        self.occupation = ''
+        self.gender = ''
+        self.vk = ''
+        self.telegram = ''
+        self.skype = ''
+        self.discord = ''
+        self.icq = ''
+        self.instagram = ''
+        self.youtube = ''
+        self.facebook = ''
+        self.twitter = ''
+
 class Comment:
     def __init__(self, userId, nickname, message, fullMessage, commentId):
         self.commentId = commentId
@@ -294,16 +315,10 @@ class Account:
         except requests.RequestException:
             traceback.print_exc()
             pass
-<<<<<<< HEAD
 
     def editMessageInProfile(self, postId: int, profileId: int, message: str):
         try:
             self.updateToken()
-=======
-        
-    def editMessageInProfile(self, postId: int, profileId: int, message: str):
-        try:
->>>>>>> aafe2f69e1cf90f2c463ea8307c977c58c686ebf
             r = self.client.post('https://www.blast.hk/profile-posts/{0}/edit'.format(postId), data = {
                 'message_html': message,
                 '_xfInlineEdit': 1,
@@ -316,11 +331,74 @@ class Account:
         except requests.RequestException as e:
             traceback.print_exception(e)
             pass
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> aafe2f69e1cf90f2c463ea8307c977c58c686ebf
+    def getProfileInfo(self):
+        try:
+            self.updateToken()
+            profileInfo = ProfileInfo()
+            r = self.client.get('https://www.blast.hk/account/account-details')
+            html = r.text
+            soup = bs4.BeautifulSoup(html, 'html.parser')
+            profileInfo.receive_admin_email = soup.find('input', {'name': 'option[receive_admin_email]'}).get('value')
+            profileInfo.activity_summary_email = soup.find('input', {'name': 'enable_activity_summary_email'}).get('value')
+            profileInfo.show_dob_date = soup.find('input', {'name': 'option[show_dob_date]'}).get('value')
+            try:
+                profileInfo.custom_title = soup.find('input', {'name': 'user[custom_title]'}).get('value')
+            except Exception:
+                profileInfo.custom_title = ''
+            profileInfo.location = soup.find('input', {'name': 'profile[location]'}).get('value')
+            profileInfo.website = soup.find('input', {'name': 'profile[website]'}).get('value')
+            profileInfo.about = soup.find('textarea', {'name': 'about_html'}).contents
+            profileInfo.gender = soup.find('dl', {'data-field': 'gender'}).find('input', {'checked': 'checked'}).get('value')
+            profileInfo.vk = soup.find('input', {'name': 'custom_fields[vkontakte]'}).get('value')
+            profileInfo.telegram = soup.find('input', {'name': 'custom_fields[telegram]'}).get('value')
+            profileInfo.occupation = soup.find('input', {'name': 'custom_fields[occupation]'}).get('value')
+            profileInfo.skype = soup.find('input', {'name': 'custom_fields[skype]'}).get('value')
+            profileInfo.youtube = soup.find('input', {'name': 'custom_fields[youtube]'}).get('value')
+            profileInfo.discord = soup.find('input', {'name': 'custom_fields[discord]'}).get('value')
+            profileInfo.facebook = soup.find('input', {'name': 'custom_fields[facebook]'}).get('value')
+            profileInfo.icq = soup.find('input', {'name': 'custom_fields[icq]'}).get('value')
+            profileInfo.twitter= soup.find('input', {'name': 'custom_fields[twitter]'}).get('value')
+            profileInfo.instagram = soup.find('input', {'name': 'custom_fields[instagram]'}).get('value')
+            return profileInfo
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            return None
+
+    def changeCustomTitle(self, title):
+        try:
+            self.updateToken()
+            info = self.getProfileInfo()
+            r = self.client.post('https://www.blast.hk/account/account-details', data = {
+            'option[receive_admin_email]': info.receive_admin_email,
+            'enable_activity_summary_email': info.activity_summary_email,
+            'option[show_dob_date]': info.show_dob_date,
+            'user[custom_title]': title,
+            'profile[location]': info.location,
+            'profile[website]': info.website,
+            'html_about': info.about,
+            'custom_fields[gender]': info.gender,
+            'custom_fields[occupation]': info.occupation,
+            'custom_fields[vkontakte]': info.vk,
+            'custom_fields[telegram]': info.telegram,
+            'custom_fields[skype]': info.skype,
+            'custom_fields[youtube]': info.youtube,
+            'custom_fields[discord]': info.discord,
+            'custom_fields[facebook]': info.facebook,
+            'custom_fields[icq]': info.icq,
+            'custom_fields[twitter]': info.twitter,
+            'custom_fields[instagram]': info.instagram,
+            '_xfToken': self.token,
+            '_xfRequestUri': '/account/account-details',
+            '_xfWithData': 1,
+            '_xfToken': self.token,
+            '_xfResponseType': 'json'
+            })
+            #print(r.text)
+        except requests.RequestException as e:
+            traceback.print_exception(e)
+            pass
+
     def getMessagesInThreadOnLastPage(self, thread: int):
         try:
             self.updateToken()
